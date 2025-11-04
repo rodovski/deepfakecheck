@@ -1,20 +1,11 @@
-import { useState, useRef } from "react";
-import HeroSection from "@/components/HeroSection";
+import { useState } from "react";
 import UploadZone from "@/components/UploadZone";
 import ResultsDisplay, { type AnalysisResult } from "@/components/ResultsDisplay";
-import FeaturesSection from "@/components/FeaturesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const uploadRef = useRef<HTMLDivElement>(null);
-
-  const handleUploadClick = () => {
-    uploadRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const handleFileSelect = (file: File) => {
     console.log('File selected:', file.name);
@@ -40,38 +31,28 @@ export default function Home() {
 
   const handleAnalyzeAnother = () => {
     setResult(null);
-    uploadRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-      <HeroSection onUploadClick={handleUploadClick} />
-
-      <section ref={uploadRef} className="py-20 px-6" id="upload">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         {result ? (
           <ResultsDisplay result={result} onAnalyzeAnother={handleAnalyzeAnother} />
         ) : (
-          <>
+          <div className="w-full max-w-2xl">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-display">
-                Upload Your Image
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Drop any image to instantly analyze it for deepfake indicators
-              </p>
+              <h1 className="text-6xl md:text-7xl font-bold mb-2 font-display">
+                DeepFakeCheck
+              </h1>
             </div>
             <UploadZone onFileSelect={handleFileSelect} isProcessing={isProcessing} />
-          </>
+          </div>
         )}
-      </section>
-
-      <FeaturesSection />
-      <HowItWorksSection />
-      <Footer />
+      </div>
     </div>
   );
 }

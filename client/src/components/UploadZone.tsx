@@ -38,26 +38,22 @@ export default function UploadZone({ onFileSelect, isProcessing = false }: Uploa
   }, [onFileSelect]);
 
   return (
-    <div className="max-w-3xl mx-auto px-6">
+    <div>
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-xl p-12 text-center transition-all ${
+        className={`border-2 border-dashed rounded-lg p-8 text-center transition-all ${
           isDragging 
             ? 'border-primary bg-primary/5 scale-102' 
             : 'border-border hover-elevate'
         } ${isProcessing ? 'opacity-50 pointer-events-none' : ''}`}
         data-testid="upload-zone"
       >
-        <CloudArrowUpIcon className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+        <CloudArrowUpIcon className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
         
-        <h3 className="text-2xl font-semibold mb-3">
-          {isProcessing ? 'Analyzing...' : 'Upload Image to Analyze'}
-        </h3>
-        
-        <p className="text-muted-foreground mb-6">
-          Drag and drop your image here, or click to browse
+        <p className="text-muted-foreground mb-4">
+          {isProcessing ? 'Analyzing...' : 'Drag and drop an image or click to browse'}
         </p>
         
         <input
@@ -72,19 +68,14 @@ export default function UploadZone({ onFileSelect, isProcessing = false }: Uploa
         
         <Button
           asChild
-          variant="outline"
           size="lg"
           disabled={isProcessing}
           data-testid="button-browse"
         >
           <label htmlFor="file-input" className="cursor-pointer">
-            Browse Files
+            Choose File
           </label>
         </Button>
-        
-        <p className="text-sm text-muted-foreground mt-4">
-          Supports JPG, PNG, WEBP (max 10MB)
-        </p>
       </div>
     </div>
   );
