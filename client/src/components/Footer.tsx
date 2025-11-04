@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2024 Deepfake Detector. Powered by Sightengine AI Technology.</p>
+          <p>© 2024 DeepFakeCheck. Powered by Sightengine AI Technology.</p>
         </div>
       </div>
     </footer>
