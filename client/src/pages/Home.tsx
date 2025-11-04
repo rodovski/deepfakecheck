@@ -39,15 +39,18 @@ export default function Home() {
         <ThemeToggle />
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 pt-32 pb-40">
         {result ? (
           <ResultsDisplay result={result} onAnalyzeAnother={handleAnalyzeAnother} />
         ) : (
-          <div className="w-full max-w-2xl">
-            <div className="text-center mb-12">
-              <h1 className="text-6xl md:text-7xl font-bold mb-2 font-display">
+          <div className="w-full max-w-xl">
+            <div className="text-center mb-8 space-y-6">
+              <h1 className="text-5xl font-normal text-foreground/90 tracking-tight" style={{ letterSpacing: '-0.02em' }}>
                 DeepFakeCheck
               </h1>
+              <p className="text-lg text-muted-foreground font-normal">
+                Verify image authenticity with AI
+              </p>
             </div>
             <UploadZone onFileSelect={handleFileSelect} isProcessing={isProcessing} />
           </div>

@@ -56,7 +56,7 @@ export default function ResultsDisplay({ result, onAnalyzeAnother }: ResultsDisp
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
       <div className="grid md:grid-cols-2 gap-8">
-        <Card className="p-8">
+        <Card className="p-8 shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
           <div className="text-center">
             <Icon className={`w-20 h-20 mx-auto mb-6 ${config.color}`} />
             
@@ -86,7 +86,7 @@ export default function ResultsDisplay({ result, onAnalyzeAnother }: ResultsDisp
           </div>
         </Card>
 
-        <Card className="p-8">
+        <Card className="p-8 shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
           <h3 className="text-xl font-semibold mb-6">Detailed Analysis</h3>
           
           <div className="space-y-4">

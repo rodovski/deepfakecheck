@@ -43,16 +43,16 @@ export default function UploadZone({ onFileSelect, isProcessing = false }: Uploa
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-lg p-8 text-center transition-all ${
+        className={`border rounded-md p-8 text-center transition-all shadow-[0_1px_4px_rgba(0,0,0,0.08)] ${
           isDragging 
-            ? 'border-primary bg-primary/5 scale-102' 
-            : 'border-border hover-elevate'
+            ? 'border-primary bg-primary/5' 
+            : 'border-muted-border bg-muted/30 hover-elevate'
         } ${isProcessing ? 'opacity-50 pointer-events-none' : ''}`}
         data-testid="upload-zone"
       >
-        <CloudArrowUpIcon className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+        <CloudArrowUpIcon className="w-9 h-9 mx-auto mb-4 text-muted-foreground" />
         
-        <p className="text-muted-foreground mb-4">
+        <p className="text-base text-muted-foreground mb-6 font-normal">
           {isProcessing ? 'Analyzing...' : 'Drag and drop an image or click to browse'}
         </p>
         
@@ -68,9 +68,9 @@ export default function UploadZone({ onFileSelect, isProcessing = false }: Uploa
         
         <Button
           asChild
-          size="lg"
           disabled={isProcessing}
           data-testid="button-browse"
+          className="font-medium"
         >
           <label htmlFor="file-input" className="cursor-pointer">
             Choose File
